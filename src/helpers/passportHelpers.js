@@ -5,31 +5,25 @@ const User = require('../models/user.js')
 
 // Pass custom fields to Verify callback  
 const customFields = {
-	usernameField: 'username',
-	passwordField: 'password'
+    usernameField: 'username',
+    passwordField: 'password'
 }
 
 // Verify callback function for Local strategy 
 const verifyCallback = async (username, password, done) => {
-	
-	try {
-		const user = await User.findOne({ username })
-	
-		if(!user) {
-			return done(null, false)
-		}
-		
-		const isValidPassword = passwordHelpers.validatePassword(password, user.salt, user.hash)
-	
-		if(!isValidPassword) {
-			return done(null, false)
-		}
-		
-		return done(null, user)
-
-	} catch (err) {
-		done(err)
-	}	
+    try {
+	const user = await User.findOne({ username })
+	if(!user) {
+	    return done(null, false)
+	}
+	const isValidPassword = passwordHelpers.validatePassword(password, user.salt, user.hash)
+	if(!isValidPassword) {
+	    return done(null, false)
+	}
+	return done(null, user)
+    } catch (err) {
+	done(err)
+    }	
 }
 
 // Local strategy 
@@ -45,13 +39,11 @@ passport.serializeUser((user, done) => {
 
 // Get user ID from req.Session.passport.user and populate req.user from database 
 passport.deserializeUser(async (userId, done) => {
-	try {
-		const user = await User.findById(userId)
-
-		done(null, user)
-
-	} catch (err) {
-		done(err)
-	}
+    try {
+	const user = await User.findById(userId)
+	done(null, user)
+    } catch (err) {
+	done(err)
+    }
 })
 
