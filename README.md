@@ -1,4 +1,4 @@
-# Passport-Local-Authentication
+# Passport Local Authentication
 A NodeJS authentication system for handling user authentication using Passport Local Strategy. 
 
 ## Language & Tools
@@ -14,12 +14,12 @@ A NodeJS authentication system for handling user authentication using Passport L
 ## Installation Process
 1. Clone the repo using this command
   ```
-  git clone https://github.com/bishalbikram/Passport-Local-Authentication.git
+  git clone https://github.com/bishalbikram/passport-local-authentication.git
   ```
     
 2. Change directory
   ```
-  cd Passport-Local-Authentication
+  cd passport-local-authentication
   ```
     
 3. Install npm packages
